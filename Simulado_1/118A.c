@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <stdio.h> // scanf e printf
+// #include <string.h> // strlen, strcpy, strchr
+#include <ctype.h> //  toLower
 
 int main() {
     char palavra[105], c;
