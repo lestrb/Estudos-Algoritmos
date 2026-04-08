@@ -20,11 +20,12 @@ int main (){
     int s_forca, n_dragoes;
     bool ganhou = true;
 
-    Dragao *dragoes; // Ponteiro pra array de structs do tipo Dragao
+    // Dragao *dragoes;
 
     scanf ("%d %d", &s_forca, &n_dragoes);
 
-    dragoes = (Dragao *) malloc(n_dragoes * sizeof(Dragao)); // Alocacao dinamica do array de structs
+    Dragao *dragoes = malloc(n_dragoes * sizeof(*dragoes));
+    // dragoes = (Dragao *) malloc(n_dragoes * sizeof(Dragao)); // Alocacao dinamica do array de structs
 
     for (int i=0; i<n_dragoes; i++){
         scanf("%d %d", &dragoes[i].x_forca, &dragoes[i].y_bonus);
