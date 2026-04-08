@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h> // malloc, free e qsort
+#include <stdbool.h>
 
 typedef struct{
-        int x_forca;
-        int y_bonus;
+    int x_forca;
+    int y_bonus;
 } Dragao;
 
 int comparar_dragoes(const void *a, const void *b) {
@@ -17,6 +18,7 @@ int comparar_dragoes(const void *a, const void *b) {
 
 int main (){
     int s_forca, n_dragoes;
+    bool ganhou = true;
 
     Dragao *dragoes; // Ponteiro pra array de structs do tipo Dragao
 
@@ -31,7 +33,16 @@ int main (){
         // array      qtd      tam elemento      funcao juiz
     qsort(dragoes, n_dragoes, sizeof(Dragao), comparar_dragoes);
 
-    
+    for (int i=0; i<n_dragoes; i++){
+        if (s_forca > dragoes[i].x_forca) { s_forca = s_forca + dragoes[i].y_bonus; } // Se vencer, adiciona bonus
+        else { 
+            ganhou = false; // Se perder, ganhou = false e encerra o loop
+            break; 
+        }
+    }
+
+    if (ganhou){ printf("YES"); }
+    else { printf("NO"); }
 
     free(dragoes);
     return 0;
